@@ -1,0 +1,163 @@
+{
+  "trajes": [
+    {
+      "id": 1,
+      "personaje": "Goku",
+      "Serie": "Dragon BallZ",
+      "Genero": "M",
+      "Talla": "L",
+      "PrecioAlquiler": "61",
+      "PrecioVenta": "120"
+    },
+    {
+      "id": 2,
+      "personaje": "Serena",
+      "Serie": "Sailor Moon",
+      "Genero": "F",
+      "Talla": "M",
+      "PrecioAlquiler": "45.00",
+      "PrecioVenta": "170.00"
+    },
+    {
+      "id": 3,
+      "personaje": "Inuyasha",
+      "Serie": "Inuyasha",
+      "Genero": "M",
+      "Talla": "M",
+      "PrecioAlquiler": "80.00",
+      "PrecioVenta": "210.00"
+    },
+    {
+      "id": 4,
+      "personaje": "Anakin",
+      "Serie": "StarWars",
+      "Genero": "M",
+      "Talla": "L",
+      "PrecioAlquiler": "120.00",
+      "PrecioVenta": "220.00"
+    },
+    {
+      "id": 5,
+      "personaje": "Krilin",
+      "Serie": "Dragon Ball Z",
+      "Genero": "M",
+      "Talla": "M",
+      "PrecioAlquiler": "43",
+      "PrecioVenta": "178"
+    }
+  ],
+  "alquileres": [
+    {
+      "id": 1,
+      "nombre": "PersonaA ApellidoA",
+      "dni": 45465154,
+      "Telefono": 989182565,
+      "Direccion": "Calle dada 123, Cercado",
+      "Detalle": [
+        {
+          "id": 5,
+          "FechaAlquiler": "12-12-2022 6",
+          "FechaDevolucion": "14-12-2022 14"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "PersonaB ApellidoB",
+      "dni": 25433354,
+      "Telefono": 996352565,
+      "Direccion": "Calle Cece 435, Pro",
+      "Detalle": [
+        {
+          "id": 2,
+          "FechaAlquiler": "13-12-2022 8",
+          "FechaDevolucion": "15-12-2022 20"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Diego",
+      "dni": "555555",
+      "Telefono": "949182939",
+      "Direccion": "Calle tumi234",
+      "Detalle": [
+        {
+          "id": 1,
+          "FechaAlquiler": "1-12-2022 8",
+          "FechaDevolucion": "2-12-2022 20"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "visitante",
+      "dni": "555555",
+      "Telefono": "65489",
+      "Direccion": "iiiii 777",
+      "Detalle": [
+        {
+          "id": 1,
+          "FechaAlquiler": "7-12-2022 8",
+          "FechaDevolucion": "9-12-2022 20"
+        }
+      ]
+    },
+    {
+      "Detalle": [
+        {
+          "id": 2,
+          "FechaAlquiler": "2023-2-17 11",
+          "FechaDevolucion": "2023-2-19 20"
+        }
+      ],
+      "nombre": "Juan",
+      "dni": "987456",
+      "Telefono": "222333444",
+      "Direccion": "clslkd  12323",
+      "id": 5
+    },
+    {
+      "Detalle": [
+        {
+          "id": 4,
+          "FechaAlquiler": "1-2-2023 8",
+          "FechaDevolucion": "3-2-2023 8"
+        }
+      ],
+      "nombre": "Pedro",
+      "dni": "44545993",
+      "Telefono": "959558586",
+      "Direccion": "jygjhg 6565",
+      "id": 6
+    },
+    {
+      "Detalle": [
+        {
+          "id": 1,
+          "FechaAlquiler": "23-2-2023 8",
+          "FechaDevolucion": "25-2-2023 8"
+        }
+      ],
+      "nombre": "Simon",
+      "dni": "35345345",
+      "Telefono": "9959549939",
+      "Direccion": "dfsdfdsf 222",
+      "id": 7
+    },
+    {
+      "Detalle": [
+        {
+          "id": 1,
+          "FechaAlquiler": "15-2-2023 8",
+          "FechaDevolucion": "17-2-2023 8"
+        }
+      ],
+      "nombre": "David",
+      "dni": "324234",
+      "Telefono": "485889",
+      "Direccion": "hhhh 5555",
+      "id": 8
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+.inputGroup{
+    display: flex;
+    justify-content: left;
+}
+.TrajesTable{
+    border: solid 1px #993dce;
+    background-color: #970760;
+    border-radius: 2px;
+}
+@media only screen and (max-width: 480px) {
+    .TrajesTable{
+        border: solid 1px #993dce;
+        background-color: #970760;
+        width:98%;
+        margin-left: 1%;
+    }
+}
+.TrajesTable th{
+    background-color: #fa2cab;
+    color:aliceblue;
+    border-radius: 5px;
+}
+.TrajesTable tr:hover td{
+    background-color: #c081cc;
+}
+.TrajesTable td{
+    background-color: #fc82cd;
+    border-radius: 5px;
+    border-width: 2px;
+}
+.TableBtn {
+    background-color: #ee73cf;
+    border:solid 1px rgb(235, 59, 167);
+    border-radius: 6rem;
+    color:#3f1757;
+    float: right;
+    height: 2.5rem;
+}
+.TableBtnFrame{
+    display:block;
+}
+.TableBtnFrameRow{
+    background-color: #c081cc !important ;
+}
+.TableBtnFrameCollapse{
+    display: none;
+}
+.TableBtnFrameDisplay{
+    display:none;
+}
+@media only screen and (max-width: 480px) {
+    .TableBtnFrame {
+        display:none;
+    }
+    .TableBtnFrameDisplay{
+        display:table-row;
+    }
+}
+.TableBtnContainer{
+    display: inline-flex;
+}
+.FormFieldContainer {
+    display: grid;
+    grid-template-columns: 35% 75%;
+    background-color: rgb(118, 55, 170);
+    padding: 10px;
+    width:100%;
+}
+.FormFieldContainer label{
+    color:white;
+    margin-top: 0.5rem;
+    font-size:larger ;
+}
+.FormFieldContainer input{
+    border-radius: 0.5rem;
+    width:85%;
+    margin-top: 0.5rem;
+
+}
+.FormButtonContainer {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    background-color: rgb(118, 55, 170);
+    padding: 10px;
+    width:100%;
+}
+.FormButtonContainer button {
+    background-color: #970760;
+    border: #20072e 1px solid;
+    margin:2%;
+    border-radius: 1rem;
+    color: white;
+    height: 3rem;
+}
+.AlquilerDetailTable {
+    background-color: rgb(118, 55, 170);
+    width:100%;
+}
+.AlquilerDetailTable th {
+    background-color: rgb(168, 101, 177);
+    border-radius: 0.5rem;
+    text-align: center;
+    border: 1px solid #993dce;
+
+}
+.AlquilerDetailTable td {
+    background-color: rgb(114, 76, 119);
+    color:white;
+    border-radius:0.5rem;
+    text-align: center;
+    border: 1px solid #993dce;
+}
+.SearchInput{
+    background-color: #ffffff;
+    border:solid 1px rgb(235, 59, 167);
+    border-radius:0.5rem;
+    width: 70%;
+    height: 2.3rem;
+    color:rgb(158, 46, 158);
+    outline: none;
+    margin:1%;
+}
+.SearchInput:focus-visible{
+    border:solid 2px rgb(235, 59, 167);
+}

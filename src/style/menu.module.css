@@ -1,0 +1,48 @@
+:root {
+    --custom-color: #f0f0f0;
+    --hover-color: #f5aad8;
+    --click-color: #970760;
+    --btn-color: #fc82cd;
+    /* --btn-image: linear-gradient(#ec69ba, rgb(255, 197, 241)); */
+    --fondo:#993dce;
+    --fondo-image:linear-gradient(#993dce, rgb(206, 86, 176));
+}
+.mainContainer{
+    width:20%;
+    display: inline-block;
+    position:fixed;
+}
+.mainOption1{
+
+    background-color: var(--fondo);
+    background-image: var(--fondo-image);
+}
+.mainOption1 li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: var(--custom-color);
+    border: 1px solid #f85fbd;
+    border-radius: 25px;
+}
+
+.mainOption1 a {
+    display: block;
+    color: #000;
+    background-color: var(--btn-color);
+    background-image: var(--btn-image);
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 25px;
+}
+
+/* Change the link color on hover */
+.mainOption1 a:hover {
+    background-color: var(--hover-color);
+    color: white;
+}
+.mainOption1 a:active{
+    background-color: var(--click-color);
+    color: white;
+}

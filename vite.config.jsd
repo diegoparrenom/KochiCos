@@ -1,0 +1,53 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  define: {
+    'process.env': {}
+  },
+  module: {
+    // exclude node_modules
+    rules: [
+      {
+        test: /\.(js)$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"],
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
+        exclude: /node_modules/,
+        use: ['file-loader?name=[name].[ext]'] // ?name=[name].[ext] is only necessary to preserve the original file name
+      },
+    ],
+  },
+  resolve: {
+    alias: {
+      process: "process/browser",
+      Buffer: ["buffer", "Buffer"],
+      zlib: "browserify-zlib",
+      util: 'util'
+    },
+    extensions: ["*", ".js", ".jsx"],
+    fallback: {
+      "fs": false,
+      "tls": false,
+      "net": false,
+      "path": false,
+      "zlib": false,
+      "http": false,
+      "https": false,
+      "crypto-browserify": false,
+      "querystring": false,
+      "os": false,
+      "assert": false,
+      "child_process": false,
+    }
+  },
+  plugins: [react()],
+  
+})

@@ -1,0 +1,30 @@
+.MsgContainer{
+    background-color: rgb(202, 92, 175) !important;
+    border:solid rgb(236, 14, 199) 0.5rem;
+    border-radius: 3rem !important;
+    height: 15rem;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    text-align: center;
+}
+.MsgTitle{
+    color:rgb(255, 255, 255) !important;
+    font-size:large;
+    width: 100%;
+    display: block;
+}
+.MsgIcon{
+    zoom: 15%; 
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.MsgButton{
+    background-color: rgb(209, 138, 191) !important;
+    border-radius: 1rem;
+    width:40%;
+    height:3rem;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: auto;
+}

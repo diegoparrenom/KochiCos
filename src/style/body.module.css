@@ -1,0 +1,65 @@
+.mainContainer{
+    width:70%;
+    margin-left:25%;
+    display: inline-block;
+}
+.CustomNavBar{
+    background-color: rgb(201, 103, 184);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 100%;
+}
+
+.CustomNavBtn{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: x-large;
+    display: flex;
+    align-items:center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    white-space: nowrap;
+}
+.CustomNavBtnAct{
+    color: rgb(100, 35, 107);
+    text-decoration: none;
+    display: flex;
+    align-items:center;
+}
+.CustomNavDropDownMenu{
+    background-color: rgb(201, 103, 184);
+}
+.CustomNavBtnMenu{
+    color: rgb(255, 255, 255);
+    font-size: xx-large;
+}
+.CustomNavDropDown{
+    background-color: rgb(201, 103, 184);
+    visibility: hidden;
+}
+.CustomNavOpt{
+    visibility: visible;
+    display:block;
+}
+@media only screen and (max-width: 480px) {
+    .CustomNavBar{
+        width: 100%;
+    }
+    .CustomNavDropDown{
+        visibility: visible;
+        background-color: rgb(201, 103, 184) !important;
+        border-color:  rgb(100, 35, 107) !important;
+    }
+    .CustomNavDropDown:hover{
+        background-color: rgb(128, 61, 155) !important;
+        border-color:  rgb(128, 61, 155) !important;
+    }
+    .CustomNavDropDown:focus:active {
+        border-color:  rgb(100, 35, 107) !important;
+    }
+
+
+    .CustomNavOpt{
+        visibility: hidden;
+        display: none;
+    }
+}
