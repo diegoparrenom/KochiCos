@@ -1,6 +1,4 @@
-import React, { useContext } from 'react'
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useContext,useState,useEffect} from 'react'
 import { UserContext } from '../../context/UserContext';
 import gSource from '../../helpers/gSource';
 import Loader from '../../helpers/Loader';
@@ -41,11 +39,11 @@ export const TrajesForm = ({setdisplayForm}) => {
         formState.PrecioAlquiler = String(formState.PrecioAlquiler).replace('.',',');
         formState.PrecioVenta= String(formState.PrecioVenta).replace('.',',');
 
-        if(formState.id !== undefined){
-            gSource().updateRow(SheetId,formState,{returnMessage});
+        if(formState.id_traje !== undefined){
+            gSource().updateRow(SheetId,"id_traje",formState.id_traje,formState,{returnMessage});
         }
         else{
-            formState.id = idgen.getTime();
+            formState.id_traje = idgen.getTime();
             gSource().addRow(SheetId,formState,{returnMessage});
         }
         setLoading(true);

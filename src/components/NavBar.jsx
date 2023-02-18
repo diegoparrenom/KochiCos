@@ -9,7 +9,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'// <-- import styles t
 const BtnOptions = [
     {   "link":"/trajes","title":"Consultar Trajes" },
     {   "link":"/alquiler","title":"Consultar Alquileres"},
-    {   "link":"/Login","title":"Devolver Trajes"}
+    {   "link":"/entregas","title":"Entregar Trajes"}
 ];
 
 export const NavBar = () => {

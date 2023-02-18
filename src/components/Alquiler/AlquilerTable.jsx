@@ -44,8 +44,8 @@ export const AlquilerTable = ({setdisplayForm}) => {
     }
     const onDeleteOk = (rowInfo) => {
         setLoading(true);
-        gSource().deleteRow(SheetId,rowInfo,{returnMessage});
-        gSource().deleteRow("AlquilerDetalle",rowInfo,{returnMessage},"id_alquiler");
+        gSource().deleteRow(SheetId,"id_alquiler",rowInfo.id_alquiler,{returnMessage});
+        gSource().deleteRow("AlquilerDetalle","id_alquiler",rowInfo.id_alquiler,{returnMessage});
     }
 
     const onDeleteItem = (rowInfo) => {

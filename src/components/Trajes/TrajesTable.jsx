@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import gSource from '../../helpers/gSource';
 import Loader from '../../helpers/Loader';
 
-
 const HeadItem = ["personaje","Serie","Genero","Talla","PrecioAlquiler","PrecioVenta",
                     "Editar","Eliminar","Alquilar"];
 
@@ -31,20 +30,25 @@ export const TrajesTable = ({setdisplayForm}) => {
         setdisplayForm(true);
     }
 
+    const returnMessage = () => {
+        setTable(undefined);
+        gSource().getTable(SheetId,{setTable});
+    }
+
     const onDeleteItem = (rowInfo) => {
-        gSource().deleteRow(SheetId,rowInfo);
+        gSource().deleteRow(SheetId,"id_traje",rowInfo.id_traje,{returnMessage});
     }
 
     const onRentItem = (rowInfo) => {
         if(rentInfo == null){
             setRentInfo({
                 "Detalle": [{
-                    "id_traje": rowInfo.id
+                    "id_traje": rowInfo.id_traje
                 }]
             });
         }
         else{
-            rentInfo.Detalle = [...rentInfo.Detalle,{"id_traje": rowInfo.id}];
+            rentInfo.Detalle = [...rentInfo.Detalle,{"id_traje": rowInfo.id_traje}];
         }
         navigate('/calendar');
     }

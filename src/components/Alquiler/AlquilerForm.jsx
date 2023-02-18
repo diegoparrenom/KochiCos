@@ -39,15 +39,15 @@ export const AlquilerForm = ({setdisplayForm}) => {
     }
     const onSaveForm = () => {
 
-        if(formState.id !== undefined){
-            gSource().updateRow(SheetId,formState,{returnMessage});
+        if(formState.id_alquiler !== undefined){
+            gSource().updateRow(SheetId,"id_alquiler",formState.id_alquiler,formState,{returnMessage});
         }
         else{
-            formState.id = idgen.getTime();
+            formState.id_alquiler = idgen.getTime();
             gSource().addRow(SheetId,formState,{returnMessage});
             
-            formState.Detalle[formState.Detalle.length-1].id = idgen.getTime()+1;
-            formState.Detalle[formState.Detalle.length-1].id_alquiler = formState.id;
+            formState.Detalle[formState.Detalle.length-1].id_detalquiler = idgen.getTime()+1;
+            formState.Detalle[formState.Detalle.length-1].id_alquiler = formState.id_alquiler;
             gSource().addRow("AlquilerDetalle",formState.Detalle[formState.Detalle.length-1],{returnMessage});
         }
         setLoading(true);
@@ -59,10 +59,11 @@ export const AlquilerForm = ({setdisplayForm}) => {
     useEffect(() => {
         setFormState(rentInfo);
         if(rentInfo.nombre != undefined){
-            gSource().getTableUnion("AlquilerDetalle","Trajes",rentInfo.id,{setTable});
+            gSource().getTableUnion("AlquilerDetalle","id_traje","id_alquiler",rentInfo.id_alquiler,
+                                    "Trajes","id_traje",{setTable});
         }
         else{
-            gSource().getInfoFromTable(rentInfo.Detalle,"Trajes",{setTable});
+            gSource().getInfoFromTable(rentInfo.Detalle,"Trajes","id_traje",{setTable});
         }
     }, [])
     

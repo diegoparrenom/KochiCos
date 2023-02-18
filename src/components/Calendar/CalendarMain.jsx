@@ -68,7 +68,7 @@ export const CalendarMain = () => {
         }
         else{
             let costumeId = rentInfo.Detalle[rentInfo.Detalle.length-1].id_traje;
-            gSource().getTable("AlquilerDetalle",{setTable},costumeId,"id_traje")
+            gSource().getTable("AlquilerDetalle",{setTable},"id_traje",costumeId);
         }
     }, [])
     

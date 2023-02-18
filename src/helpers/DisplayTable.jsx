@@ -3,7 +3,8 @@ import stl from '../style/form.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilePen, faSplotch, faSquarePlus, faTrashCan } from '@fortawesome/free-solid-svg-icons'// <-- import styles to be used
 
-export const DisplayTable = ({data,headerData,onEditItem,onDeleteItem,onAddItem,onRentItem}) => {
+export const DisplayTable = ({data,headerData,onEditItem,onDeleteItem,onAddItem,onRentItem,
+                                onRentedItem}) => {
 
     const headData = headerData.filter(i=>i!="Editar" && i!="Eliminar" && i!="Alquilar");
     const [searchItem, setSearchItem] = useState('');
@@ -28,6 +29,10 @@ export const DisplayTable = ({data,headerData,onEditItem,onDeleteItem,onAddItem,
                 {headerData.includes("Alquilar") &&
                     <button onClick={() => onRentItem(row)} className={stl.TableBtn}>
                         <FontAwesomeIcon icon={faSplotch} /> Alquilar
+                    </button>}
+                {headerData.includes("Entregado") &&
+                    <button onClick={() => onRentedItem(row)} className={stl.TableBtn}>
+                        <FontAwesomeIcon icon={faSplotch} /> Entregado
                     </button>}
             </div>
         )
