@@ -14,6 +14,7 @@ export const AlquilerForm = ({setdisplayForm}) => {
     const { rentInfo, setRentInfo } = useContext( UserContext );
     const [ detalle,setDetalle] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [displayAddBtn, setDisplayAddBtn] = useState(false);
     const navigate = useNavigate();
 
     const { formState,setFormState, onInputChange, onResetForm, nombre, dni, Telefono,Direccion } = useForm2({
@@ -48,11 +49,11 @@ export const AlquilerForm = ({setdisplayForm}) => {
             gSource().updateRow(SheetId,"id_alquiler",formState.id_alquiler,formState,{returnMessage});
         }
         else{
-            formState.id_alquiler = idgen.getTime();
+            formState.id_alquiler = (idgen.getTime()+Math.floor(Math.random() * 1000));
             gSource().addRow(SheetId,formState,{returnMessage});
             
             formState.Detalle.forEach((element,index) => {
-                element.id_detalquiler = `${idgen.getTime()}-${index}`;
+                element.id_detalquiler = `${(idgen.getTime()+Math.floor(Math.random() * 1000))}-${index}`;
                 element.id_alquiler =formState.id_alquiler;
             });
             gSource().addRows("AlquilerDetalle",formState.Detalle,{returnMessage});
@@ -65,12 +66,13 @@ export const AlquilerForm = ({setdisplayForm}) => {
     }
     useEffect(() => {
         setFormState(rentInfo);
-        if(rentInfo.id_alquiler != undefined){
+        if(rentInfo.id_alquiler != undefined){//editar
+            setDisplayAddBtn(false);
             gSource().getTableUnion("AlquilerDetalle","Trajes","id_traje",setTable,
                                      "id_alquiler",rentInfo.id_alquiler);
         }
-        else{
-            console.log(rentInfo);
+        else{//agregar
+            setDisplayAddBtn(true);
             gSource().getInfoFromTable(rentInfo.Detalle,"Trajes","id_traje",setTable);
         }
     }, [])
@@ -134,7 +136,8 @@ export const AlquilerForm = ({setdisplayForm}) => {
                         <button onClick={onSaveForm} >Guardar</button>
                         <button onClick={onResetForm} >Limpiar</button>
                         <button onClick={onCancel} >Cancelar</button>
-                        <button onClick={onAgregar} >Agregar</button>
+                        {displayAddBtn &&
+                            <button onClick={onAgregar} >Agregar</button>}
                     </div>
                 </div>
             }

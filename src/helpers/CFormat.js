@@ -13,8 +13,27 @@ const CFormat = () => {
         }
     }
 
+    const currency = (rawCurrency) => {
+
+        return `S/.${rawCurrency}`
+    }
+    const hour = (rawHour) => {
+
+        let h = parseInt(rawHour);
+        let AmPm = "AM";
+
+        if(h>12 && h<24){ 
+            h=h-12;
+            AmPm = "PM";
+        }
+
+        return ` ${h==24?'00':h}:00 ${AmPm}`;
+    }
+
     return {
-        date
+        date,
+        currency,
+        hour
     }
     
 }

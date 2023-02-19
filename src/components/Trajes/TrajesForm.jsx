@@ -43,7 +43,7 @@ export const TrajesForm = ({setdisplayForm}) => {
             gSource().updateRow(SheetId,"id_traje",formState.id_traje,formState,{returnMessage});
         }
         else{
-            formState.id_traje = idgen.getTime();
+            formState.id_traje = (idgen.getTime()+Math.floor(Math.random() * 1000));
             gSource().addRow(SheetId,formState,{returnMessage});
         }
         setLoading(true);

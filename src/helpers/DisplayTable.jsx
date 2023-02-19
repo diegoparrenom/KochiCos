@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import stl from '../style/form.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilePen, faSplotch, faSquarePlus, faTrashCan } from '@fortawesome/free-solid-svg-icons'// <-- import styles to be used
+import CFormat from './CFormat'
 
 export const DisplayTable = ({data,headerData,onEditItem,onDeleteItem,onAddItem,onRentItem,
                                 onRentedItem}) => {
@@ -52,7 +53,15 @@ export const DisplayTable = ({data,headerData,onEditItem,onDeleteItem,onAddItem,
             <>
                 <tr onClick={()=>updDisplay(idRow)}>
                     {headData.map(headitem => (
-                        <td key={row[headitem] + headitem}  >{row[headitem]}</td>
+                        <td key={row[headitem] + headitem}  >
+                            {
+                                (headitem=='PrecioAlquiler'||headitem=='PrecioVenta')?
+                                CFormat().currency(row[headitem]):
+                                (headitem=='HoraAlquiler'||headitem=='HoraDevolucion')?
+                                CFormat().hour(row[headitem]):
+                                row[headitem]
+                             }
+                        </td>
                     ))}
                     <td className={stl.TableBtnFrame} >
                         <MainButtons row={row} />

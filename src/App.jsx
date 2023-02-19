@@ -11,11 +11,13 @@ import { HourPicker } from "./components/Calendar/HourPicker";
 import { EntregaTable } from "./components/Entrega/EntregaTable";
 import { DevolucionTable } from "./components/Devolucion/DevolucionTable";
 import { RegistroTable } from "./components/Registro/RegistroTable";
+import { ToastContainer,toast } from 'react-toastify';
 
 function App() {
 
   return (
     <UserProvider>
+        <ToastContainer/>
         <NavBar />
         <hr />
         <Routes>

@@ -4,21 +4,20 @@ import { DisplayTable } from '../../helpers/DisplayTable'
 import { useNavigate } from 'react-router-dom';
 import gSource from '../../helpers/gSource';
 import Loader from '../../helpers/Loader';
+import Message from '../../helpers/Message';
 
 const HeadItem = ["personaje","Serie","Genero","Talla","PrecioAlquiler","PrecioVenta",
                     "Editar","Eliminar","Alquilar","Agregar"];
-
-const SheetId = "Trajes";
 
 export const TrajesTable = ({setdisplayForm}) => {
 
     const { rentInfo, setRentInfo } = useContext( UserContext );
     const navigate = useNavigate();
     const [table,setTable] = useState();
+    const [loading, setLoading] = useState(false);
     
     useEffect(()=>{
-        console.log(rentInfo);
-        gSource().getTable(SheetId,setTable);
+        gSource().getTable("Trajes",setTable);
     },[]);
 
     const onAddItem = () => {
@@ -33,11 +32,17 @@ export const TrajesTable = ({setdisplayForm}) => {
 
     const returnMessage = () => {
         setTable(undefined);
-        gSource().getTable(SheetId,setTable);
+        gSource().getTable("Trajes",setTable);
+    }
+
+    const onDeleteOk = (rowInfo) => {
+        setLoading(true);
+        gSource().deleteRow("Trajes","id_traje",rowInfo.id_traje,{returnMessage});
     }
 
     const onDeleteItem = (rowInfo) => {
-        gSource().deleteRow(SheetId,"id_traje",rowInfo.id_traje,{returnMessage});
+        setLoading(false);
+        Message().confirm(()=>onDeleteOk(rowInfo),`¿Esta Realmente Seguro de Eliminar : ${rowInfo.personaje}?`);
     }
 
     const onRentItem = (rowInfo) => {
@@ -56,13 +61,17 @@ export const TrajesTable = ({setdisplayForm}) => {
 
     return (
         <>
-        {   
-            table == undefined? 
-            <Loader  message={'Cargando info de Trajes'}/>:
-            <DisplayTable data={table} headerData={HeadItem}
-                        onEditItem={onEditItem} onDeleteItem={onDeleteItem}
-                        onAddItem={onAddItem} onRentItem={onRentItem}/>
-        }
+            {loading?
+            <Loader message={'Cargando info de Trajes'} /> :
+            <>
+            {   
+                table == undefined? 
+                <Loader  message={'Cargando info de Trajes'}/>:
+                <DisplayTable data={table} headerData={HeadItem}
+                            onEditItem={onEditItem} onDeleteItem={onDeleteItem}
+                            onAddItem={onAddItem} onRentItem={onRentItem}/>
+            }
+            </>}
         </>
     )
 }

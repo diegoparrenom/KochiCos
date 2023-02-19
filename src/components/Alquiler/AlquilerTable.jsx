@@ -4,14 +4,9 @@ import { UserContext } from '../../context/UserContext';
 import { DisplayTable } from '../../helpers/DisplayTable'
 import gSource from '../../helpers/gSource';
 import Loader from '../../helpers/Loader';
-import stl from '../../style/message.module.css'
+import Message from '../../helpers/Message';
 
-import delIcon from '../../gif/delete.png';
-
-import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
 
 const HeadItem = ["nombre","dni","Telefono","Direccion","Editar","Eliminar","Agregar"];
 const SheetId = "Alquileres";
@@ -49,28 +44,12 @@ export const AlquilerTable = ({setdisplayForm}) => {
     }
 
     const onDeleteItem = (rowInfo) => {
-        toast((
-            <div>
-                <img className={stl.MsgIcon} src={delIcon} alt="loading..." />
-                <div className={stl.MsgTitle}>
-                    ¿Esta Realmente Seguro de Eliminar a: {rowInfo.nombre}?
-                </div>
-                <br/>
-                <button className={stl.MsgButton} onClick={()=>onDeleteOk(rowInfo)}>OK</button>
-                <button className={stl.MsgButton}>Cancel</button>
-            </div>
-          ), {
-            className:stl.MsgContainer,
-            passive:false,
-            position: toast.POSITION.BOTTOM_CENTER,
-            autoClose: false,
-            closeButton: false
-          });
+        setLoading(false);
+        Message().confirm(()=>onDeleteOk(rowInfo),`¿Esta Realmente Seguro de Eliminar a: ${rowInfo.nombre}?`);
     }
 
     return (
         <>
-            <ToastContainer/>
             {loading?
             <Loader message={'Cargando info de Alquiler'} /> :
             <>

@@ -116,9 +116,11 @@ const gSource = () => {
 
       const sheet = doc.sheetsByTitle[SheetId];
       const rows = await sheet.getRows();
-      let searchid=null;
-      rows.map((d,index)=>{if(d[Sfield]==SFVAlue){searchid = index}})
-      await rows[searchid].delete(); // delete a row
+
+      for (let i = 0; i < rows.length; i++) {
+        if(rows[i][Sfield] == SFVAlue)
+          await rows[i].delete(); // delete a row
+      }
       returnMessage();
 
     }());
