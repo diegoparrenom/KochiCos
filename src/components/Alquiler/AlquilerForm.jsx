@@ -59,11 +59,11 @@ export const AlquilerForm = ({setdisplayForm}) => {
     useEffect(() => {
         setFormState(rentInfo);
         if(rentInfo.nombre != undefined){
-            gSource().getTableUnion("AlquilerDetalle","id_traje","id_alquiler",rentInfo.id_alquiler,
-                                    "Trajes","id_traje",{setTable});
+            gSource().getTableUnion("AlquilerDetalle","Trajes","id_traje",setTable,
+                                     "id_alquiler",rentInfo.id_alquiler);
         }
         else{
-            gSource().getInfoFromTable(rentInfo.Detalle,"Trajes","id_traje",{setTable});
+            gSource().getInfoFromTable(rentInfo.Detalle,"Trajes","id_traje",setTable);
         }
     }, [])
     

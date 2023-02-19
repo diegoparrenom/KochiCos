@@ -9,6 +9,7 @@ import { TrajesMain } from "./components/Trajes/TrajesMain";
 import { CalendarMain } from "./components/Calendar/CalendarMain";
 import { HourPicker } from "./components/Calendar/HourPicker";
 import { EntregaTable } from "./components/Entrega/EntregaTable";
+import { DevolucionTable } from "./components/Devolucion/DevolucionTable";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="calendar" element={ <CalendarMain /> } />
           <Route path="hourpicker" element={ <HourPicker /> } />
           <Route path="entregas" element={ <EntregaTable /> } />
+          <Route path="devolucion" element={ <DevolucionTable /> } />
           <Route path="/*" element={ <Navigate to="/about" /> } />
         </Routes>
     </UserProvider>

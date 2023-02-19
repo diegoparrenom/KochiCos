@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-const HeadItem = ["nombre","dni","Telefono","Direccion","Editar","Eliminar"];
+const HeadItem = ["nombre","dni","Telefono","Direccion","Editar","Eliminar","Agregar"];
 const SheetId = "Alquileres";
 
 export const AlquilerTable = ({setdisplayForm}) => {

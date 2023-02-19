@@ -64,22 +64,7 @@ const gSource = () => {
     setTable(data)
   
   }
-  async function getTable2(table_name,setTable,id=null,field_name="id") {
  
-    const spreadsheetId =  `${creds.sheet_id}`,
-    response = await fetch(`https://docs.google.com/spreadsheets/d/${creds.sheet_id}/gviz/tq?tqx=out:json&gid=${creds.table_id[table_name]}`),
-    result = await response.text(),
-    json = JSON.parse(result.replace(/.*google.visualization.Query.setResponse\({(.*?)}\);?/s, '{$1}'));
-
-    let data = parseTable(json);
-
-    if(id!= null)
-      data = data.filter(i=> i[field_name]==id)
-
-    setTable(data)
-  
-  }
-
   // async function getTable(SheetId,{ setTable },id=null) {
 
   //   (async function getRowInfo() {
@@ -148,7 +133,7 @@ const gSource = () => {
     }());
   }
 
-  async function getTableUnion(Sheet1,S1Field,S1SortField,S1SortFieldValue,Sheet2,S2Field,{ setTable }) {
+  async function getTableUnion(Sheet1,Sheet2,CField, setTable,S1SortField=null,S1SortFieldValue=null) {
 
     const spreadsheetId1 =  `${creds.sheet_id}`,
     response1 = await fetch(`https://docs.google.com/spreadsheets/d/${creds.sheet_id}/gviz/tq?tqx=out:json&gid=${creds.table_id[Sheet1]}`),
@@ -157,7 +142,8 @@ const gSource = () => {
   
     let data1 = parseTable(json1);
 
-    data1 = data1.filter(i=> i[S1SortField]==S1SortFieldValue);
+    if(S1SortField  != null)
+      data1 = data1.filter(i=> i[S1SortField]==S1SortFieldValue);
 
     const spreadsheetId2 =  `${creds.sheet_id}`,
     response2 = await fetch(`https://docs.google.com/spreadsheets/d/${creds.sheet_id}/gviz/tq?tqx=out:json&gid=${creds.table_id[Sheet2]}`),
@@ -165,19 +151,16 @@ const gSource = () => {
     json2 = JSON.parse(result2.replace(/.*google.visualization.Query.setResponse\({(.*?)}\);?/s, '{$1}'));
   
     let data2 = parseTable(json2);
-    let idbuff;
 
     data1.map((d1)=>{
-      idbuff = d1.id;
-      Object.assign(d1,data2.filter((d2)=>(d2[S2Field] == d1[S1Field]))[0]);
-      d1.id = idbuff;
+      Object.assign(d1,data2.filter((d2)=>(d2[CField] == d1[CField]))[0]);
     })
 
     setTable(data1);
 
   }
 
-  async function getInfoFromTable(srcMatrix,SheetId2,SField,{ setTable }) {
+  async function getInfoFromTable(srcMatrix,SheetId2,SField, setTable ) {
 
     (async function getRowInfo() {
       await gSheetInit()
@@ -205,8 +188,7 @@ const gSource = () => {
     deleteRow,
     updateRow,
     getTableUnion,
-    getInfoFromTable,
-    getTable2
+    getInfoFromTable
   }
 }
 

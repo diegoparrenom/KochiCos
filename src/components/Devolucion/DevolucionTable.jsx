@@ -4,11 +4,11 @@ import gSource from '../../helpers/gSource';
 import Loader from '../../helpers/Loader';
 import CFormat from '../../helpers/CFormat';
 
-const HeadItem = ["personaje","Serie","nombre","Telefono","HoraAlquiler",
+const HeadItem = ["personaje","Serie","nombre","Telefono","HoraDevolucion",
                     "Entregado"];
 const Fecha = new Date();
 
-export const EntregaTable = () => {
+export const DevolucionTable = () => {
 
     const [table,setTable] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -23,15 +23,15 @@ export const EntregaTable = () => {
     }
     const setTableTrajes = (result) => {
         result.map( (row) => { 
-            row.HoraAlquiler=CFormat().date(row.FechaAlquiler).hour 
+            row.HoraDevolucion=CFormat().date(row.FechaDevolucion).hour 
         });
         setTable(
             result.
             filter( (r)=>(
-                CFormat().date(r.FechaAlquiler).day== Fecha.getDate() &&
-                CFormat().date(r.FechaAlquiler).month== Fecha.getMonth()+1 &&
-                CFormat().date(r.FechaAlquiler).year== Fecha.getFullYear() && 
-                r.Estado == "Disponible"
+                CFormat().date(r.FechaDevolucion).day== Fecha.getDate() &&
+                CFormat().date(r.FechaDevolucion).month== Fecha.getMonth()+1 &&
+                CFormat().date(r.FechaDevolucion).year== Fecha.getFullYear() && 
+                r.Estado == "No Disponible"
             ))
         );
         setLoading(false);
@@ -50,7 +50,7 @@ export const EntregaTable = () => {
             "Talla":row.Talla,
             "PrecioAlquiler":row.PrecioAlquiler,
             "PrecioVenta":row.PrecioVenta,
-            "Estado":"No Disponible"
+            "Estado":"Disponible"
         }
         gSource().updateRow("Trajes","id_traje",row.id_traje,row_traje,{returnMessage});
     }
@@ -59,7 +59,7 @@ export const EntregaTable = () => {
         <>
         {   
            loading? 
-            <Loader  message={'Buscando Entregas para hoy...'}/>:
+            <Loader  message={'Buscando Devoluciones para hoy...'}/>:
             <DisplayTable data={table} headerData={HeadItem} onRentedItem={onRentedItem}/>
         }
         </>

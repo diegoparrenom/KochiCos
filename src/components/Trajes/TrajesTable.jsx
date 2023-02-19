@@ -6,7 +6,7 @@ import gSource from '../../helpers/gSource';
 import Loader from '../../helpers/Loader';
 
 const HeadItem = ["personaje","Serie","Genero","Talla","PrecioAlquiler","PrecioVenta",
-                    "Editar","Eliminar","Alquilar"];
+                    "Editar","Eliminar","Alquilar","Agregar"];
 
 const SheetId = "Trajes";
 

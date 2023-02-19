@@ -6,7 +6,8 @@ import { faFilePen, faSplotch, faSquarePlus, faTrashCan } from '@fortawesome/fre
 export const DisplayTable = ({data,headerData,onEditItem,onDeleteItem,onAddItem,onRentItem,
                                 onRentedItem}) => {
 
-    const headData = headerData.filter(i=>i!="Editar" && i!="Eliminar" && i!="Alquilar");
+    const headData = headerData.filter(i=>i!="Editar" && i!="Eliminar" && 
+                                          i!="Alquilar" && i!="Entregado" && i!="Agregar");
     const [searchItem, setSearchItem] = useState('');
     const [searchField, setSearchField] = useState(headData[0])
 
@@ -80,9 +81,10 @@ export const DisplayTable = ({data,headerData,onEditItem,onDeleteItem,onAddItem,
                 placeholder={`Buscar ${[searchField]} ...`}
                 onChange={() => setSearchItem(event.target.value)}
                 className={stl.SearchInput} />
+            {headerData.includes("Agregar") &&
             <button onClick={() => onAddItem()} className={stl.TableBtn} >
                 <FontAwesomeIcon icon={faSquarePlus} /> Agregar
-            </button>
+            </button>}
             <br/>
             <br/>
             <table className={stl.TrajesTable} >
