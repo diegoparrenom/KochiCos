@@ -53,6 +53,19 @@ export const DevolucionTable = () => {
             "Estado":"Disponible"
         }
         gSource().updateRow("Trajes","id_traje",row.id_traje,row_traje,{returnMessage});
+
+        let RegisterRow = {
+            "personaje":row.personaje,
+            "Serie":row.Serie,
+            "nombre":row.nombre,
+            "dni":row.dni,
+            "Telefono":row.Telefono,
+            "Direccion":row.Direccion,
+            "FechaAlquiler":row.FechaAlquiler,
+            "FechaDevolucion":row.FechaDevolucion,
+            "Estado":"Devuelto"
+        }
+        gSource().addRow("Registro",RegisterRow,{returnMessage});
     }
 
     return (

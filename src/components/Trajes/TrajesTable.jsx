@@ -17,7 +17,8 @@ export const TrajesTable = ({setdisplayForm}) => {
     const [table,setTable] = useState();
     
     useEffect(()=>{
-        gSource().getTable(SheetId,{setTable});
+        console.log(rentInfo);
+        gSource().getTable(SheetId,setTable);
     },[]);
 
     const onAddItem = () => {
@@ -32,7 +33,7 @@ export const TrajesTable = ({setdisplayForm}) => {
 
     const returnMessage = () => {
         setTable(undefined);
-        gSource().getTable(SheetId,{setTable});
+        gSource().getTable(SheetId,setTable);
     }
 
     const onDeleteItem = (rowInfo) => {

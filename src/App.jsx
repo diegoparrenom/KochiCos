@@ -10,6 +10,7 @@ import { CalendarMain } from "./components/Calendar/CalendarMain";
 import { HourPicker } from "./components/Calendar/HourPicker";
 import { EntregaTable } from "./components/Entrega/EntregaTable";
 import { DevolucionTable } from "./components/Devolucion/DevolucionTable";
+import { RegistroTable } from "./components/Registro/RegistroTable";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="hourpicker" element={ <HourPicker /> } />
           <Route path="entregas" element={ <EntregaTable /> } />
           <Route path="devolucion" element={ <DevolucionTable /> } />
+          <Route path="registro" element={ <RegistroTable /> } />
           <Route path="/*" element={ <Navigate to="/about" /> } />
         </Routes>
     </UserProvider>

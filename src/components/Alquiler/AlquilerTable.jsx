@@ -24,7 +24,7 @@ export const AlquilerTable = ({setdisplayForm}) => {
     const [loading, setLoading] = useState(false);
 
     useEffect(()=>{
-        gSource().getTable(SheetId,{setTable});
+        gSource().getTable(SheetId,setTable);
     },[]);
 
     const onAddItem = () => {
@@ -40,7 +40,7 @@ export const AlquilerTable = ({setdisplayForm}) => {
     const returnMessage = () => {
         setLoading(false);
         setTable(undefined);
-        gSource().getTable(SheetId,{setTable});
+        gSource().getTable(SheetId,setTable);
     }
     const onDeleteOk = (rowInfo) => {
         setLoading(true);

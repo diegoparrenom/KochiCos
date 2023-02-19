@@ -87,20 +87,22 @@ export const DisplayTable = ({data,headerData,onEditItem,onDeleteItem,onAddItem,
             </button>}
             <br/>
             <br/>
-            <table className={stl.TrajesTable} >
-                <thead>
-                    <tr>
-                        {headData.map(headitem => (
-                            <th key={headitem} onClick={()=>setSearchField(headitem)}>{ReplaceWords(headitem)}</th>
+            <div className={stl.TableContainer}>
+                <table className={stl.TrajesTable} >
+                    <thead>
+                        <tr>
+                            {headData.map(headitem => (
+                                <th key={headitem} onClick={()=>setSearchField(headitem)}>{ReplaceWords(headitem)}</th>
+                            ))}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {sortby(data,searchItem).map((row,index) => (
+                            <RowTable key={index} row={row} idRow={index} updDisplay={updDisplay}/>
                         ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {sortby(data,searchItem).map((row,index) => (
-                        <RowTable key={index} row={row} idRow={index} updDisplay={updDisplay}/>
-                    ))}
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
             <br/>
 
         </>

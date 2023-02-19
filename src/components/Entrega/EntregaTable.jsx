@@ -53,6 +53,21 @@ export const EntregaTable = () => {
             "Estado":"No Disponible"
         }
         gSource().updateRow("Trajes","id_traje",row.id_traje,row_traje,{returnMessage});
+
+        let RegisterRow = {
+            "personaje":row.personaje,
+            "Serie":row.Serie,
+            "nombre":row.nombre,
+            "dni":row.dni,
+            "Telefono":row.Telefono,
+            "Direccion":row.Direccion,
+            "FechaAlquiler":row.FechaAlquiler,
+            "FechaDevolucion":row.FechaDevolucion,
+            "Estado":"Alquilado"
+        }
+        gSource().addRow("Registro",RegisterRow,{returnMessage});
+           
+        
     }
 
     return (

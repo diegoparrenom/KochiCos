@@ -2,6 +2,11 @@
     display: flex;
     justify-content: left;
 }
+.TableContainer{
+    width:100%;
+    height:31rem;
+    overflow:scroll;
+}
 .TrajesTable{
     border: solid 1px #993dce;
     background-color: #970760;

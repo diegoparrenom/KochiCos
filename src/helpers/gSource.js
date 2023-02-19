@@ -49,7 +49,7 @@ const gSource = () => {
     return data;
   }
 
-  async function getTable(table_name,{setTable},Sfield=null,SFValue=null) {
+  async function getTable(table_name,setTable,Sfield=null,SFValue=null) {
  
     const spreadsheetId =  `${creds.sheet_id}`,
     response = await fetch(`https://docs.google.com/spreadsheets/d/${creds.sheet_id}/gviz/tq?tqx=out:json&gid=${creds.table_id[table_name]}`),
@@ -83,8 +83,6 @@ const gSource = () => {
   //   }());
   // }
 
-  
-
   async function addRow(SheetId,Row,{returnMessage}) {
 
     (async function getRowInfo() {
@@ -93,6 +91,19 @@ const gSource = () => {
       // delete Row.itemlength;
       const sheet = doc.sheetsByTitle[SheetId];
       const moreRows = await sheet.addRows([Row]);
+
+      returnMessage();
+    }());
+  }
+
+  async function addRows(SheetId,Rows,{returnMessage}) {
+
+    (async function getRowInfo() {
+      await gSheetInit()
+      doc.getInfo();
+      // delete Row.itemlength;
+      const sheet = doc.sheetsByTitle[SheetId];
+      const moreRows = await sheet.addRows(Rows);
 
       returnMessage();
     }());
@@ -185,6 +196,7 @@ const gSource = () => {
   return {
     getTable,
     addRow,
+    addRows,
     deleteRow,
     updateRow,
     getTableUnion,

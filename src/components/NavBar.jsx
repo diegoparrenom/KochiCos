@@ -10,7 +10,8 @@ const BtnOptions = [
     {   "link":"/trajes","title":"Consultar Trajes" },
     {   "link":"/alquiler","title":"Consultar Alquileres"},
     {   "link":"/entregas","title":"Entregar Trajes"},
-    {   "link":"/devolucion","title":"Devolver Trajes"}
+    {   "link":"/devolucion","title":"Devolver Trajes"},
+    {   "link":"/registro","title":"Registro Alquileres"}
 ];
 
 export const NavBar = () => {

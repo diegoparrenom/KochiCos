@@ -24,6 +24,11 @@ export const AlquilerForm = ({setdisplayForm}) => {
     })
 
     const onAgregar = () => {
+        rentInfo.nombre=formState.nombre;
+        rentInfo.dni=formState.dni;
+        rentInfo.Telefono=formState.Telefono;
+        rentInfo.Direccion=formState.Direccion;
+        setRentInfo(rentInfo)
         navigate('/trajes');
     }
 
@@ -46,9 +51,11 @@ export const AlquilerForm = ({setdisplayForm}) => {
             formState.id_alquiler = idgen.getTime();
             gSource().addRow(SheetId,formState,{returnMessage});
             
-            formState.Detalle[formState.Detalle.length-1].id_detalquiler = idgen.getTime()+1;
-            formState.Detalle[formState.Detalle.length-1].id_alquiler = formState.id_alquiler;
-            gSource().addRow("AlquilerDetalle",formState.Detalle[formState.Detalle.length-1],{returnMessage});
+            formState.Detalle.forEach((element,index) => {
+                element.id_detalquiler = `${idgen.getTime()}-${index}`;
+                element.id_alquiler =formState.id_alquiler;
+            });
+            gSource().addRows("AlquilerDetalle",formState.Detalle,{returnMessage});
         }
         setLoading(true);
     }
@@ -58,11 +65,12 @@ export const AlquilerForm = ({setdisplayForm}) => {
     }
     useEffect(() => {
         setFormState(rentInfo);
-        if(rentInfo.nombre != undefined){
+        if(rentInfo.id_alquiler != undefined){
             gSource().getTableUnion("AlquilerDetalle","Trajes","id_traje",setTable,
                                      "id_alquiler",rentInfo.id_alquiler);
         }
         else{
+            console.log(rentInfo);
             gSource().getInfoFromTable(rentInfo.Detalle,"Trajes","id_traje",setTable);
         }
     }, [])
@@ -126,7 +134,7 @@ export const AlquilerForm = ({setdisplayForm}) => {
                         <button onClick={onSaveForm} >Guardar</button>
                         <button onClick={onResetForm} >Limpiar</button>
                         <button onClick={onCancel} >Cancelar</button>
-                        {detalle.length>0?<button onClick={onAgregar} >Agregar</button>:''}
+                        <button onClick={onAgregar} >Agregar</button>
                     </div>
                 </div>
             }
